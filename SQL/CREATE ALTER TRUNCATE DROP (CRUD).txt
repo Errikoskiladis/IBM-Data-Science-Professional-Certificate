@@ -1,0 +1,49 @@
+CREATE-ALTER-TRUNCATE-DROP
+
+All the statements that are mentioned above, are commonly used and are 
+categorized as DDT (Data Definition Language) statements. Having said that, 
+we can now continue with the syntax of these statements of SQL. 
+
+------------------------------------------------------------------------------------------------------------------------
+
+Create: Is used to create a new table in a database
+
+CREATE TABLE table_name (
+    column1 datatype,
+    column2 datatype,
+    column3 datatype,
+   ....
+);
+
+------------------------------------------------------------------------------------------------------------------------
+
+Alter: Is used to add, delete or modify columns in an existing table. 
+
+ALTER TABLE table_name
+ADD COLUMN column_name data_type column_constraint;
+
+ALTER TABLE table_name
+DROP COLUMN column_name;
+
+ALTER TABLE table_name
+ALTER COLUMN column_name SET DATA TYPE data_type;
+
+ALTER TABLE table_name
+RENAME COLUMN current_column_name TO new_column_name;
+
+So, in ALTER TABLE statement we can (ADD, DROP, ALTER, RENAME) a column in an existing table.
+
+------------------------------------------------------------------------------------------------------------------------
+
+Truncate: Is used to delete ALL rows from an existing table, but not the table itself.
+
+TRUNCATE TABLE table_name;
+
+------------------------------------------------------------------------------------------------------------------------
+
+Drop: Is used to delete an existing table in a database. 
+
+DROP TABLE table_name;
+
+------------------------------------------------------------------------------------------------------------------------
+
