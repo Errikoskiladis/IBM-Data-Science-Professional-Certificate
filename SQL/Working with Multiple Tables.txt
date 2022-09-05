@@ -1,0 +1,53 @@
+12:41 μμ 5/9/2022
+
+
+--Exercise 1: Accessing Multiple Tables with Sub-Queries
+
+--PROBLEM 1: Retrieve only the EMPLOYEES records that correspond to jobs in the JOBS table.
+
+select * from employees where JOB_ID IN (SELECT JOB_IDENT FROM JOBS);
+
+--PROBLEM 2: Retrieve only the list of employees whose JOB_TITLE is Jr. Designer.
+
+select * from employees where JOB_ID IN (SELECT JOB_IDENT FROM JOBS WHERE JOB_TITLE='Jr. Designer');
+
+--PROBLEM 3: Retrieve JOB information and who earn more than $70,000.
+
+select * from jobs where JOB_IDENT IN (select JOB_ID from employees WHERE SALARY>70000);
+
+--PROBLEM 4: Retrieve JOB information and whose birth year is after 1976.
+
+select * from jobs where JOB_IDENT IN (select JOB_ID from employees WHERE B_DATE >= '1977-01-01' );
+
+--PROBLEM 5: Retrieve JOB information for female employees whose birth year is after 1976.
+
+select * from jobs where JOB_IDENT IN (select JOB_ID from employees WHERE (B_DATE >= '1977-01-01' AND SEX='F'));
+
+------------------------------------------------------------------
+
+
+--Exercise 2: Accessing Multiple Tables with Implicit Joins
+
+--PROBLEM 1: Perform an implicit cartesian/cross join between EMPLOYEES and JOBS tables.
+
+select * from employees, jobs;
+
+--PROBLEM 2: Retrieve only the EMPLOYEES records that correspond to jobs in the JOBS table.
+
+select * from employees, jobs where employees.JOB_ID = jobs.JOB_IDENT; 
+
+--PROBLEM 3: Redo the previous query, using shorter aliases for table names.
+
+select * from employees e, jobs j where e.JOB_ID = j.JOB_IDENT; 
+
+--PROBLEM 4: Redo the previous query, but retrieve only the Employee ID, Employee Name and Job Title.
+
+select e.EMP_ID, concat(concat(e.F_Name,' '),e.L_Name) as Full_Name, j.JOB_TITLE from employees e, jobs j 
+where e.JOB_ID = j.JOB_IDENT;
+
+--PROBLEM 5: Redo the previous query, but specify the fully qualified column names with aliases in the SELECT clause.
+
+select e.EMP_ID, concat(concat(e.F_Name,' '),e.L_Name) as Full_Name, j.JOB_TITLE from employees e, jobs j 
+where e.JOB_ID = j.JOB_IDENT;
+
+--THAT WAS ALREADY DONE FROM THE PREVIOUS PROBLEM
